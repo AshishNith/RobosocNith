@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+    --primary: #8a2be2;
+    --dark: #0a0a0a;
+    --neon-purple: #b829ff;
+    --neon-blue: #2962ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    /* background-color: var(--dark); */
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
+    /* background: linear-gradient(45deg, #0a0a0a, #1a1a1a); */
+}
+
+/* navbar */
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 1000;
+    background-color: #000;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+nav .logo{
+    font-size: 30px;
+    font-weight: 100;
+    color: #fff;
+}
+nav .nav-links{
+    display: flex;
+    gap: 30px;
+}
+
+nav .nav-links a{
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    transition: var(--transition);
+}
+
+nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+nav .nav-links a:hover::after {
+    width: 100%;
+}
+
+nav .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+nav .nav-links i{
+    color: #8462E8;
+    font-size: 30px;
+    font-weight: 50;   
+}
+
+
+
+
+.members-container {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.member-card {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card-front {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-back {
+    background: linear-gradient(145deg, rgba(138, 43, 226, 0.2), rgba(41, 98, 255, 0.2));
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.hex-image {
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+    position: relative;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-info {
+    text-align: center;
+    padding: 1rem;
+}
+
+.member-name {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.member-position {
+    color: #b19eff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+}
+
+.member-bio {
+    margin: 1rem 0;
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.skill-tag {
+    padding: 0.3rem 1rem;
+    background: rgba(138, 43, 226, 0.2);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+/* Glowing border effect */
+.card-front::before,
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    z-index: -1;
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member-card:hover .card-front::before,
+.member-card:hover .card-back::before {
+    opacity: 0.5;
+}
+
+.members-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.member-card {
+    width: 100%;
+    height: 400px;
+    /* ... rest of member-card styles remain same ... */
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1100px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .member-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
+
+/* Add this new style for the flipped state */
+.member-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Ensure links stay clickable */
+.social-links {
+    position: relative;
+    z-index: 2;
+}
+
+.social-link {
+    cursor: pointer;
+}
+
+/* Remove the existing flip class and add these styles in the <style> section */
+.member-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-inner.return-front {
+    transform: rotateY(0deg) !important; /* Override hover effect */
+}
