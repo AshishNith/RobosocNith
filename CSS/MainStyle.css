@@ -47,7 +47,8 @@ nav{
     z-index: 1000;
     background-color: #000;
     transition: var(--transition);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(17px);
+    /* opacity: 0.8; */
     background-color: rgba(0, 0, 0, 0.8); 
 }
 nav .logo{
